@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +57,7 @@
             // echo $u_name;
             // echo $p_word;
             $_SESSION['IsLoggedIn'] = true;
+
             header("Location: index.php");
         }
         else 
@@ -63,6 +65,14 @@
     
     }
 
+    ?>
+    <?php
+       
+         if (isset($_SESSION['IsLoggedIn']))
+         {
+            header("Location: index.php");
+         }
+        
     ?>
    
 </body>

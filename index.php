@@ -4,6 +4,7 @@
         {
             header("Location: login.php");
         }
+       
 
 ?>
 <!DOCTYPE html>
@@ -58,6 +59,7 @@
         }
         ?>
     </table>
-   <a href="create.php">go to create page</a>
+   <a href="create.php">go to create page</a><br>   
+   <a href="logout.php">logout</a>
 </body>
 </html>

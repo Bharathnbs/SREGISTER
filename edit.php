@@ -5,6 +5,11 @@
             header("Location: login.php");
         }
 
+        if(empty($_GET['sid']))
+        {
+         header("Location: index.php");
+        }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
