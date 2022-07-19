@@ -63,6 +63,7 @@
     
     </table>
    <a href="create.php">go to create page</a><br>   
-   <a href="logout.php">logout</a>
+   <a href="logout.php">logout</a><br>
+   <a href="markattendance.php">mark_attendance</a>
 </body>
 </html>

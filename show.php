@@ -36,7 +36,8 @@
 
         while($row = mysqli_fetch_array($attendances))
         {
-            echo "{$row['date']} - {$row['status']}<br>";
+            $color = $row['status'] == 'A' ? 'red' : 'green';
+            echo "<div style='background-color:{$color}'>{$row['date']} - {$row['status']}<br></div>";
         }
     ?>
     
