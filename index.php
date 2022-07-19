@@ -40,6 +40,8 @@
 
         $result =mysqli_query($connection,'SELECT * FROM student_register');
 
+    
+
         while($row = mysqli_fetch_array($result))
         {
             if(isset($row['sname']))
@@ -58,6 +60,7 @@
             }
         }
         ?>
+    
     </table>
    <a href="create.php">go to create page</a><br>   
    <a href="logout.php">logout</a>

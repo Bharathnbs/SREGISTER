@@ -10,6 +10,47 @@
          header("Location: index.php");
         }
 
+        $id =$_GET['sid'];
+
+    $hostname ="localhost";
+    $username ="leanhost";
+    $password ="1234";
+    
+    $connection =mysqli_connect($hostname,$username,$password);
+
+    $db_select =mysqli_select_db($connection,'student_details');
+
+        if($_SERVER['REQUEST_METHOD']=="POST")
+        {
+            $sname =$_POST['sname'];
+            $fname =$_POST['fname'];
+            $mname =$_POST['mname'];
+            $contectno =$_POST['contectno'];
+            $aatherno =$_POST['aatherno'];
+            $bloodgroup =$_POST['bloodgroup'];
+            $addresss =$_POST['addresss'];
+           
+              $id =$_GET['sid'];
+               
+               $hostname ="localhost";
+               $username ="leanhost";
+               $password ="1234";
+           
+               $connection =mysqli_connect($hostname,$username,$password);
+           
+               $db_select =mysqli_select_db($connection,'student_details');
+            //    if(!$db_select)
+            //    {
+            //     echo "not connect";
+            //    }
+           
+               $query= mysqli_query($connection,"UPDATE student_register  SET sname='$sname',fname='$fname',mname='$mname',contectno='$contectno',aatherno='$aatherno',bloodgroup='$bloodgroup',addresss='$addresss' WHERE sID='$id'");
+            //    if($query)
+            //    {
+            //        echo "update  successfully";
+            //    }
+        }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,15 +63,7 @@
 <body>
     <?php 
 
-    $id =$_GET['sid'];
-
-    $hostname ="localhost";
-    $username ="leanhost";
-    $password ="1234";
     
-    $connection =mysqli_connect($hostname,$username,$password);
-
-    $db_select =mysqli_select_db($connection,'student_details');
 
     $query= mysqli_query($connection,"SELECT * FROM student_register WHERE sID=$id");
         
@@ -69,39 +102,11 @@
         </form>
         <?php
 
-        if($_SERVER['REQUEST_METHOD']=="POST")
-        {
-            $sname =$_POST['sname'];
-            $fname =$_POST['fname'];
-            $mname =$_POST['mname'];
-            $contectno =$_POST['contectno'];
-            $aatherno =$_POST['aatherno'];
-            $bloodgroup =$_POST['bloodgroup'];
-            $addresss =$_POST['addresss'];
-           
-              $id =$_GET['sid'];
-               
-               $hostname ="localhost";
-               $username ="leanhost";
-               $password ="1234";
-           
-               $connection =mysqli_connect($hostname,$username,$password);
-           
-               $db_select =mysqli_select_db($connection,'student_details');
-            //    if(!$db_select)
-            //    {
-            //     echo "not connect";
-            //    }
-           
-               $query= mysqli_query($connection,"UPDATE student_register  SET sname='$sname',fname='$fname',mname='$mname',contectno='$contectno',aatherno='$aatherno',bloodgroup='$bloodgroup',addresss='$addresss' WHERE sID='$id'");
-            //    if($query)
-            //    {
-            //        echo "update  successfully";
-            //    }
-        }
-
-
+        
+        
 ?>
+
+
    <a href="index.php">go to index page</a> 
 </body>
 </html>

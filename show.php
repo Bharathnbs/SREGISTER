@@ -23,12 +23,21 @@
     
         $db_select =mysqli_select_db($connection,'student_details');
 
-        $query= mysqli_query($connection,"SELECT * FROM student_register WHERE sID=$id");
+        $details = mysqli_query($connection,"SELECT * FROM student_register WHERE sID=$id");
+        $attendances = mysqli_query($connection,"SELECT * FROM attendance WHERE student_id=$id");
 
-        while($row = mysqli_fetch_array($query))
+        while($row = mysqli_fetch_array($details))
         {
             echo $row['sID']."<br>"
                . $row['sname'] ;
         }
+
+        echo '<br>';
+
+        while($row = mysqli_fetch_array($attendances))
+        {
+            echo "{$row['date']} - {$row['status']}<br>";
+        }
     ?>
+    
    
