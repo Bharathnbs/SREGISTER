@@ -1,4 +1,12 @@
 <?php
+        session_start();
+        if(!isset($_SESSION['IsLoggedIn']))
+        {
+            header("Location: login.php");
+        }
+
+?>
+<?php
 $id =$_GET['sid'];
     
     $hostname ="localhost";
