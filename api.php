@@ -3,7 +3,7 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo json_encode(['name' => 'bharath', 'age' => 25]);
 } else {
-    echo json_encode(['name' => 'adi', 'age' => 25]);
+    echo json_encode(['name' => 'adi sk', 'age' => 25]);
 }
 
 ?>
