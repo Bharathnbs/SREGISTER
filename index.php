@@ -26,7 +26,9 @@
             <th>aather no</th>
             <th>blood group</th>
             <th>address</th>
+            <th>courseID</th>
             <th>operation</th>
+            
             
         </tr>
         <?php
@@ -38,7 +40,7 @@
     
         $db_select =mysqli_select_db($connection,'student_details');
 
-        $result =mysqli_query($connection,'SELECT * FROM student_register');
+        $result =mysqli_query($connection,'SELECT * FROM `student_register` JOIN courses ON student_register.courseID = courses.id');
 
     
 
@@ -55,6 +57,7 @@
                 <td>{$row['aatherno']}</td>
                 <td>{$row['bloodgroup']}</td>
                 <td>{$row['addresss']}</td>
+                <td>{$row['course']}</td>
                 <td><a href='delete.php?sid={$row['sID']}'>delete</a><br><a href='edit.php?sid={$row['sID']}'>edit</a></td>
                 </tr>";
             }
@@ -64,6 +67,7 @@
     </table>
    <a href="create.php">go to create page</a><br>   
    <a href="logout.php">logout</a><br>
-   <a href="markattendance.php">mark_attendance</a>
+   <a href="markattendance.php">mark_attendance</a><br>
+   <a href="update_mark.php">update student_marksS</a>
 </body>
 </html>

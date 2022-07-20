@@ -25,7 +25,8 @@
 
         $details = mysqli_query($connection,"SELECT * FROM student_register WHERE sID=$id");
         $attendances = mysqli_query($connection,"SELECT * FROM attendance WHERE student_id=$id");
-
+        $student_mark = mysqli_query($connection,"SELECT * FROM student_mark JOIN subjects ON student_mark.subject_id = subjects.id  WHERE student_id=$id");
+       
         while($row = mysqli_fetch_array($details))
         {
             echo $row['sID']."<br>"
@@ -39,6 +40,10 @@
             $color = $row['status'] == 'A' ? 'red' : 'green';
             echo "<div style='background-color:{$color}'>{$row['date']} - {$row['status']}<br></div>";
         }
+        echo '<br>';
+
+        while($row = mysqli_fetch_array($student_mark))
+        {
+            echo "{$row['name']} {$row['mark']}<br>";
+        }  
     ?>
-    
-   

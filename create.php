@@ -5,6 +5,14 @@
             header("Location: login.php");
         }
 
+        $hostname ="localhost";
+        $username ="leanhost";
+        $password ="1234";
+
+        $connection =mysqli_connect($hostname,$username,$password);
+    
+        $db_select =mysqli_select_db($connection,'student_details');
+        $courses =mysqli_query($connection,'SELECT * FROM courses');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +39,16 @@
             <input type="text" name="bloodgroup" /><br>
             <label for="sname">address</label><br>
             <input type="text" name="addresss" /><br>
+            <label for="courseID">Course</label><br>
+            <select name="courseID" >
+                <?php while($rows =mysqli_fetch_array($courses))
+                {
+                    echo "<option value='{$rows['id']}'>{$rows['course']}</option>";
+                }
+
+                ?>
+
+            </select><br>
             <input type="submit" value="sumbit" name="sumbit"><br>
             
         </form>
@@ -49,7 +67,7 @@
                 $aatherno =$_POST['aatherno'];
                 $bloodgroup =$_POST['bloodgroup'];
                 $addresss =$_POST['addresss'];
-
+                $course =$_POST['courseID'];
 
                 $hostname ="localhost";
                 $username ="leanhost";
@@ -59,7 +77,7 @@
             
                 $db_select =mysqli_select_db($connection,'student_details');
 
-                $query =mysqli_query($connection,"INSERT INTO student_register(sname,fname,mname,contectno,aatherno,bloodgroup,addresss) VALUES ('$sname','$fname','$mname','$contectno','$aatherno','$bloodgroup','$addresss')");
+                $query =mysqli_query($connection,"INSERT INTO student_register(sname,fname,mname,contectno,aatherno,bloodgroup,addresss,courseID) VALUES ('$sname','$fname','$mname','$contectno','$aatherno','$bloodgroup','$addresss','{$course}')");
                 if($query)
                 {
                     echo "update A DATAs";

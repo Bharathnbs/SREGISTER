@@ -47,6 +47,7 @@
     <?php
            if($_SERVER['REQUEST_METHOD']=="POST")
            {
+            
              $attendance =mysqli_query($connection,"INSERT INTO attendance (student_id,date,status) VALUE ('{$_POST['student_id']}','{$_POST['date']}','{$_POST['status']}')");
            }
 

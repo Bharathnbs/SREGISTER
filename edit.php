@@ -29,6 +29,8 @@
             $aatherno =$_POST['aatherno'];
             $bloodgroup =$_POST['bloodgroup'];
             $addresss =$_POST['addresss'];
+            $course =$_POST['courseID'];
+
            
               $id =$_GET['sid'];
                
@@ -39,12 +41,9 @@
                $connection =mysqli_connect($hostname,$username,$password);
            
                $db_select =mysqli_select_db($connection,'student_details');
-            //    if(!$db_select)
-            //    {
-            //     echo "not connect";
-            //    }
+            
            
-               $query= mysqli_query($connection,"UPDATE student_register  SET sname='$sname',fname='$fname',mname='$mname',contectno='$contectno',aatherno='$aatherno',bloodgroup='$bloodgroup',addresss='$addresss' WHERE sID='$id'");
+               $query= mysqli_query($connection,"UPDATE student_register  SET sname='$sname',fname='$fname',mname='$mname',contectno='$contectno',aatherno='$aatherno',bloodgroup='$bloodgroup',addresss='$addresss',courseID='{$course}' WHERE sID='$id'");
             //    if($query)
             //    {
             //        echo "update  successfully";
@@ -66,7 +65,8 @@
     
 
     $query= mysqli_query($connection,"SELECT * FROM student_register WHERE sID=$id");
-        
+    $courses =mysqli_query($connection,'SELECT * FROM courses');
+    
     while($row=mysqli_fetch_array($query))
     {
         $sname =$row['sname'];
@@ -76,6 +76,7 @@
         $aatherno =$row['aatherno'];
         $bloodgroup =$row['bloodgroup'];
         $addresss =$row['addresss'];
+        $course =$row['courseID'];
        
     }
 
@@ -97,6 +98,17 @@
             <input type="text" name="bloodgroup" value="<?php echo $bloodgroup ?>"/><br>
             <label for="sname">address</label><br>
             <input type="text" name="addresss" value="<?php echo $addresss ?>"/><br>
+            <label for="courseID">Course</label><br>
+            <select name="courseID" >
+                <?php while($rows =mysqli_fetch_array($courses))
+                {
+                    $selected = $rows['id'] == $course ? 'selected' : '';
+                    echo "<option {$selected} value='{$rows['id']}'>{$rows['course']}</option>";
+                }
+
+                ?>
+
+            </select><br>
             <input type="submit" value="sumbit" name="sumbit"><br>
             
         </form>
